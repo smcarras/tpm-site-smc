@@ -1,0 +1,250 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Award, Users, Zap, TrendingUp, Shield, Lightbulb, ArrowRight } from 'lucide-react';
+import CTAButton from '../components/CTAButton';
+
+interface AboutProps {
+  onNavigate: (page: string) => void;
+}
+
+function ImageWithFallback(props: any) {
+  const [didError, setDidError] = useState(false);
+  const { src, alt, style, className, ...rest } = props;
+
+  return didError ? (
+    <div
+      className={`inline-block bg-gray-100 text-center align-middle ${className ?? ''}`}
+      style={style}
+    >
+      <div className="flex items-center justify-center w-full h-full">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==\" alt="Error loading image" {...rest} data-original-url={src} />
+      </div>
+    </div>
+  ) : (
+    <img src={src} alt={alt} className={className} style={style} {...rest} onError={() => setDidError(true)} />
+  );
+}
+
+function AnimatedText({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), delay);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+export default function About({ onNavigate }: AboutProps) {
+  return (
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="pt-40 pb-40 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <AnimatedText>
+            <div className="text-center">
+              <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light">
+                Innovating <span className="text-blue-900">Since 1986</span>
+              </h1>
+              
+              <p className="text-2xl lg:text-3xl text-slate-600 mb-14 leading-relaxed max-w-4xl mx-auto font-light">
+                A small, dynamic, and bespoke team delivering modern tools.
+              </p>
+            </div>
+          </AnimatedText>
+        </div>
+      </section>
+
+      {/* Image + Text Section */}
+      <section className="py-40 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedText>
+              <ImageWithFallback
+                src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBvZmZpY2V8ZW58MXx8fHwxNzgzOTcxMTM5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Professional team collaboration"
+                className="rounded-lg shadow-2xl"
+              />
+            </AnimatedText>
+            
+            <AnimatedText delay={200}>
+              <div>
+                <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light text-slate-900">Who We Are</h2>
+                <div className="space-y-6 text-xl text-slate-700 leading-relaxed font-light">
+                  <p>
+                    Clients and agents are our priority. We bring powerful tools that help you develop talent, get people paid well and fast, and stay fully compliant.
+                  </p>
+                  <p>
+                    We understand political space and new media demands. Our small, dynamic team brings decades of experience combined with cutting-edge technology.
+                  </p>
+                </div>
+              </div>
+            </AnimatedText>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Grid */}
+      <section className="py-40 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <AnimatedText>
+            <div className="text-center mb-20">
+              <h2 className="text-6xl lg:text-7xl mb-6 tracking-tighter font-light text-slate-900">What Drives Us</h2>
+            </div>
+          </AnimatedText>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Users,
+                title: 'Client-Centered',
+                description: 'Clients and agents are at the center of everything we do.',
+              },
+              {
+                icon: Lightbulb,
+                title: 'Innovative Spirit',
+                description: 'Pioneered cable programming rates in the 1990s. Innovating today.',
+              },
+              {
+                icon: Zap,
+                title: 'Speed & Precision',
+                description: 'Our tools match the pace of political and new media work.',
+              },
+              {
+                icon: Shield,
+                title: 'Compliance First',
+                description: 'Full state and union compliance, handled automatically.',
+              },
+              {
+                icon: Award,
+                title: 'Decades of Experience',
+                description: 'Helping talent get paid well and fast since 1986.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Results That Kick Ass',
+                description: 'We make you even better at what you do.',
+              }
+            ].map((item, index) => (
+              <AnimatedText key={index} delay={index * 100}>
+                <div className="group bg-slate-50 rounded-lg p-10 hover:bg-blue-900 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
+                    <item.icon className="text-white" size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-2xl mb-4 text-slate-900 group-hover:text-white transition-colors font-light">{item.title}</h3>
+                  <p className="text-slate-600 group-hover:text-white/90 leading-relaxed font-light">{item.description}</p>
+                </div>
+              </AnimatedText>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Legacy Section */}
+      <section className="py-40 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+          <AnimatedText>
+            <div className="w-20 h-20 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-8">
+              <Award size={48} strokeWidth={1.5} />
+            </div>
+            <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light">Our Legacy</h2>
+            <p className="text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto font-light">
+              Since the 1990s we helped shape cable programming rate structures still used today. Today we continue that pioneering spirit with tools built for how you actually work now.
+            </p>
+          </AnimatedText>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-40 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <AnimatedText>
+            <div className="text-center mb-20">
+              <h2 className="text-6xl lg:text-7xl mb-6 tracking-tighter font-light text-slate-900">Why Work With Us</h2>
+            </div>
+          </AnimatedText>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                title: 'We Understand Your World',
+                description: 'Deep experience in political consulting and new media means we understand your unique challenges.'
+              },
+              {
+                title: 'Small Team, Big Impact',
+                description: 'As a bespoke team, we\'re agile, responsive, and deeply committed to every client.'
+              },
+              {
+                title: 'Modern Tools, Proven Expertise',
+                description: 'Cutting-edge technology combined with decades of industry knowledge.'
+              },
+              {
+                title: 'We Kick Ass for Our Clients',
+                description: 'Our reputation is built on delivering exceptional results.'
+              }
+            ].map((item, index) => (
+              <AnimatedText key={index} delay={index * 100}>
+                <div className="bg-slate-50 rounded-lg p-10 border-l-4 border-blue-900 h-full">
+                  <h3 className="text-2xl mb-4 font-light text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed text-lg font-light">{item.description}</p>
+                </div>
+              </AnimatedText>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-40 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <AnimatedText>
+            <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light">Ready to get started?</h2>
+            <p className="text-xl mb-14 text-slate-400 font-light">
+              Join teams who trust Talent PayMaster.
+            </p>
+            <div className="flex flex-wrap gap-5 justify-center">
+              <button
+                onClick={() => onNavigate('contact')}
+                className="px-10 py-5 bg-red-600 text-white rounded-md hover:bg-red-700 transition-all text-lg font-light"
+              >
+                Get Started
+              </button>
+              <button
+                onClick={() => onNavigate('portal')}
+                className="px-10 py-5 bg-transparent text-white border-2 border-white/40 rounded-md hover:bg-white/10 transition-all text-lg font-light"
+              >
+                Explore Portal
+              </button>
+            </div>
+          </AnimatedText>
+        </div>
+      </section>
+    </div>
+  );
+}
