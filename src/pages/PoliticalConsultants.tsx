@@ -65,8 +65,54 @@ export default function PoliticalConsultants({ onNavigate }: PoliticalConsultant
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-40 pb-40 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="relative pt-40 pb-40 bg-white overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <div className="blob blob-a"></div>
+          <div className="blob blob-b"></div>
+          <div className="blob blob-c"></div>
+          <div className="absolute inset-0 bg-white/40"></div>
+        </div>
+        <style>{`
+          .blob {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.55;
+            will-change: transform;
+          }
+          .blob-a {
+            width: 520px; height: 520px;
+            top: -140px; left: -120px;
+            background: radial-gradient(circle at 30% 30%, #4a48a3, #1e1c6d);
+            animation: blobA 26s ease-in-out infinite;
+          }
+          .blob-b {
+            width: 460px; height: 460px;
+            top: 40px; right: -140px;
+            background: radial-gradient(circle at 30% 30%, #e14b3b, #be061b);
+            opacity: 0.4;
+            animation: blobB 32s ease-in-out infinite;
+          }
+          .blob-c {
+            width: 400px; height: 400px;
+            bottom: -160px; left: 45%;
+            background: radial-gradient(circle at 30% 30%, #6f6dc4, #312e88);
+            animation: blobC 30s ease-in-out infinite;
+          }
+          @keyframes blobA {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(90px,70px) scale(1.12); }
+          }
+          @keyframes blobB {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-80px,60px) scale(1.15); }
+          }
+          @keyframes blobC {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-60px,-70px) scale(1.1); }
+          }
+        `}</style>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
           <AnimatedText>
             <div className="text-center">
               <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light">
@@ -145,8 +191,8 @@ export default function PoliticalConsultants({ onNavigate }: PoliticalConsultant
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedText>
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1668706971199-37e30a4e6298?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2xpdGljYWwlMjBjYW1wYWlnbiUyMHN0cmF0ZWd5fGVufDF8fHx8MTc4Mzk3MDg4MXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Political campaign strategy"
+                src="/logos/capitol.png"
+                alt="U.S. Capitol"
                 className="rounded-lg shadow-2xl"
               />
             </AnimatedText>
@@ -154,7 +200,7 @@ export default function PoliticalConsultants({ onNavigate }: PoliticalConsultant
             <AnimatedText delay={200}>
               <div>
                 <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light text-slate-900">
-                  <span className="text-blue-900">Focus</span> on Winning
+                  Focus on <span className="text-red-600">Winning</span>
                 </h2>
                 <p className="text-xl text-slate-700 mb-8 leading-relaxed font-light">
                   Your expertise is strategy. Let our portal handle the administrative work so you can focus on what really matters.

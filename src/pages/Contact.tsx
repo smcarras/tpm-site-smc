@@ -107,7 +107,7 @@ export default function Contact({ onNavigate }: ContactProps) {
               <AnimatedText>
                 <h2 className="text-5xl mb-6 tracking-tighter font-light text-slate-900">Get Portal Access</h2>
                 <p className="text-lg text-slate-600 mb-10 leading-relaxed font-light">
-                  Fill out the form. Our team will respond within 24 hours.
+                  Fill out the form. Our team will contact you shortly.
                 </p>
               </AnimatedText>
 
@@ -294,35 +294,6 @@ export default function Contact({ onNavigate }: ContactProps) {
                 </div>
               </AnimatedText>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="py-40 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <AnimatedText>
-            <div className="text-center mb-16">
-              <h2 className="text-6xl lg:text-7xl mb-6 tracking-tighter font-light text-slate-900">Why Request Access?</h2>
-            </div>
-          </AnimatedText>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: 'Fast Setup', description: 'Portal access configured within 24-48 hours.' },
-              { title: 'Dedicated Support', description: 'Personalized onboarding and ongoing support.' },
-              { title: 'No Obligation', description: 'Request a demo and see the portal in action first.' }
-            ].map((item, index) => (
-              <AnimatedText key={index} delay={index * 100}>
-                <div className="bg-slate-50 rounded-lg p-10 text-center h-full">
-                  <div className="w-16 h-16 bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="text-white" size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-2xl mb-3 font-light text-slate-900">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed font-light">{item.description}</p>
-                </div>
-              </AnimatedText>
-            ))}
           </div>
         </div>
       </section>

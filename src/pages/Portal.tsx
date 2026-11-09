@@ -65,12 +65,58 @@ export default function Portal({ onNavigate }: PortalProps) {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-40 pb-40 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="relative pt-40 pb-40 bg-white overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <div className="blob blob-a"></div>
+          <div className="blob blob-b"></div>
+          <div className="blob blob-c"></div>
+          <div className="absolute inset-0 bg-white/40"></div>
+        </div>
+        <style>{`
+          .blob {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.55;
+            will-change: transform;
+          }
+          .blob-a {
+            width: 520px; height: 520px;
+            top: -140px; left: -120px;
+            background: radial-gradient(circle at 30% 30%, #4a48a3, #1e1c6d);
+            animation: blobA 26s ease-in-out infinite;
+          }
+          .blob-b {
+            width: 460px; height: 460px;
+            top: 40px; right: -140px;
+            background: radial-gradient(circle at 30% 30%, #e14b3b, #be061b);
+            opacity: 0.4;
+            animation: blobB 32s ease-in-out infinite;
+          }
+          .blob-c {
+            width: 400px; height: 400px;
+            bottom: -160px; left: 45%;
+            background: radial-gradient(circle at 30% 30%, #6f6dc4, #312e88);
+            animation: blobC 30s ease-in-out infinite;
+          }
+          @keyframes blobA {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(90px,70px) scale(1.12); }
+          }
+          @keyframes blobB {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-80px,60px) scale(1.15); }
+          }
+          @keyframes blobC {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-60px,-70px) scale(1.1); }
+          }
+        `}</style>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
           <AnimatedText>
             <div className="text-center">
               <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light">
-                The <span className="text-red-600">Portal</span>
+                The <span>Portal</span>
               </h1>
               
               <p className="text-2xl lg:text-3xl text-slate-600 mb-14 leading-relaxed max-w-3xl mx-auto font-light">
@@ -118,7 +164,7 @@ export default function Portal({ onNavigate }: PortalProps) {
               },
               {
                 icon: Shield,
-                title: 'Auto Compliance',
+                title: 'Compliance Safeguards',
                 description: 'Taxes and union rules handled.',
               },
               {
@@ -210,7 +256,7 @@ export default function Portal({ onNavigate }: PortalProps) {
             <AnimatedText delay={100}>
               <div>
                 <div className="text-7xl mb-4 text-white font-light">100%</div>
-                <div className="text-xl text-slate-400 font-light">Compliance Guaranteed</div>
+                <div className="text-xl text-slate-400 font-light">Satisfaction Guaranteed</div>
               </div>
             </AnimatedText>
             <AnimatedText delay={200}>

@@ -69,16 +69,34 @@ export default function Home({ onNavigate }: HomeProps) {
     <div className="bg-white">
       {/* Hero Section - Full Screen */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Full Screen Background Image */}
-        <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaW5lbWF0aWMlMjBmaWxtJTIwcHJvZHVjdGlvbiUyMGRyYW1hdGljfGVufDF8fHx8MTc4Mzk3NDQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080"
+        {/* Full Screen Background: moving soft blobs behind a dark silhouette */}
+        <div className="absolute inset-0 z-0 overflow-hidden" style={{ background: 'linear-gradient(160deg, #0b0a26 0%, #14134a 55%, #1e1c6d 100%)' }}>
+          <div className="hero-blob hero-blob-a"></div>
+          <div className="hero-blob hero-blob-b"></div>
+          <div className="hero-blob hero-blob-c"></div>
+          <div className="hero-blob hero-blob-w1"></div>
+          <div className="hero-blob hero-blob-w2"></div>
+          <img
+            src="/logos/home-silhouette.png"
             alt="Cinematic production"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
+          {/* subtle darkening for text readability */}
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 90% 70% at 50% 45%, rgba(6,7,24,0.68), rgba(11,10,38,0.35) 65%, rgba(11,10,38,0.15))' }}></div>
         </div>
+        <style>{`
+          .hero-blob { position:absolute; border-radius:9999px; filter:blur(90px); opacity:0.55; will-change:transform; }
+          .hero-blob-a { width:640px; height:640px; top:-160px; left:-120px; background:radial-gradient(circle at 30% 30%, #4a48a3, #1e1c6d); animation:heroBlobA 28s ease-in-out infinite; }
+          .hero-blob-b { width:560px; height:560px; top:10%; right:-160px; background:radial-gradient(circle at 30% 30%, #c0301f, #8f0414); opacity:0.3; animation:heroBlobB 34s ease-in-out infinite; }
+          .hero-blob-c { width:520px; height:520px; bottom:-200px; left:40%; background:radial-gradient(circle at 30% 30%, #4a48a3, #26246f); opacity:0.5; animation:heroBlobC 31s ease-in-out infinite; }
+          .hero-blob-w1 { width:560px; height:560px; top:-40px; left:34%; background:radial-gradient(circle at 40% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0)); opacity:0.42; animation:heroBlobW1 30s ease-in-out infinite; }
+          .hero-blob-w2 { width:460px; height:460px; bottom:-120px; right:18%; background:radial-gradient(circle at 40% 40%, rgba(255,255,255,0.85), rgba(255,255,255,0)); opacity:0.34; animation:heroBlobW2 36s ease-in-out infinite; }
+          @keyframes heroBlobW1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(70px,60px) scale(1.14);} }
+          @keyframes heroBlobW2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-90px,-50px) scale(1.1);} }
+          @keyframes heroBlobA { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(120px,90px) scale(1.15);} }
+          @keyframes heroBlobB { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-100px,80px) scale(1.18);} }
+          @keyframes heroBlobC { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-80px,-90px) scale(1.12);} }
+        `}</style>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center text-white py-20">
           <AnimatedText>
@@ -91,7 +109,7 @@ export default function Home({ onNavigate }: HomeProps) {
           
           <AnimatedText delay={200}>
             <p className="text-xl lg:text-2xl text-white/90 mb-14 leading-relaxed max-w-3xl mx-auto font-light">
-              Behind every killer campaign and breakout production is a team that refuses to get buried in paperwork.
+              Behind every killer campaign and breakout production is a team that<br />refuses to let you get buried in paperwork.
             </p>
           </AnimatedText>
           
@@ -114,12 +132,6 @@ export default function Home({ onNavigate }: HomeProps) {
           </AnimatedText>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10">
-          <div className="w-6 h-10 border border-white/40 rounded-full flex justify-center">
-            <div className="w-1 h-2 bg-white/50 rounded-full mt-2"></div>
-          </div>
-        </div>
       </section>
 
       {/* Yesterday's Pioneers Section */}
@@ -128,11 +140,11 @@ export default function Home({ onNavigate }: HomeProps) {
           <AnimatedText>
             <div className="text-center mb-24">
               <h2 className="text-6xl lg:text-7xl mb-12 tracking-tighter font-light leading-[1.1]">
-                <span className="text-slate-900">Yesterday's Pioneers.</span><br />
-                <span className="text-blue-900">Today's Advantage.</span>
+                <span className="text-slate-900">Today's Innovators.</span><br />
+                <span className="text-blue-900">Your Advantage.</span>
               </h2>
               <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light">
-                Innovating since 1986. We helped set industry standards in the '90s. Today, we built a portal that matches your speed.
+                Innovating since 1986, we never stopped. We have been creating industry standards since the '90s. Today, we built a portal that matches your speed.
               </p>
             </div>
           </AnimatedText>
@@ -146,7 +158,7 @@ export default function Home({ onNavigate }: HomeProps) {
               },
               {
                 icon: Zap,
-                text: 'Bill clients instantly',
+                text: 'Bill your clients same day',
               },
               {
                 icon: DollarSign,
@@ -162,7 +174,7 @@ export default function Home({ onNavigate }: HomeProps) {
               },
               {
                 icon: CheckCircle,
-                text: 'Auto compliance',
+                text: 'Compliance Safeguards',
               }
             ].map((benefit, index) => (
               <AnimatedText key={index} delay={index * 100}>
@@ -215,7 +227,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   <ImageWithFallback
                     src={images.clientLogos.discoveryChannel}
                     alt="Discovery Channel"
-                    className="h-16 w-auto object-contain"
+                    className="h-[70px] w-auto object-contain"
                   />
                 </div>
                 
@@ -242,7 +254,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   <ImageWithFallback
                     src={images.clientLogos.nationalGeographic}
                     alt="National Geographic"
-                    className="h-16 w-auto object-contain"
+                    className="h-[70px] w-auto object-contain"
                   />
                 </div>
               </React.Fragment>
@@ -274,7 +286,7 @@ export default function Home({ onNavigate }: HomeProps) {
           <AnimatedText>
             <div className="text-center">
               <h2 className="text-6xl lg:text-7xl mb-6 tracking-tighter font-light">
-                The <span className="text-red-600">Portal</span>
+                The <span className="text-white">Portal</span>
               </h2>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">
                 One login. Everything you need.
@@ -292,28 +304,28 @@ export default function Home({ onNavigate }: HomeProps) {
           >
             {[
               {
-                title: 'Instant Estimates',
+                title: 'Fast Estimates',
                 description: 'Turn estimates around in minutes. Know your costs and move forward fast.',
                 icon: Clock,
-                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBzY3JlZW58ZW58MXx8fHwxNzgzODc1Mzk0fDA&ixlib=rb-4.1.0&q=80&w=1080'
+                image: '/art/lightning.png'
               },
               {
                 title: 'Fast Payments',
-                description: 'Send invoices directly. Bill clients within minutes.',
+                description: 'Send invoices directly. Bill your clients same day.',
                 icon: DollarSign,
-                image: 'https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBidXNpbmVzcyUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzgzOTczOTkyfDA&ixlib=rb-4.1.0&q=80&w=1080'
+                image: '/art/money.png'
               },
               {
                 title: 'Team Management',
                 description: 'Manage talent and crew with contracts, timesheets, and scheduling.',
                 icon: Users,
-                image: 'https://images.unsplash.com/photo-1668706971199-37e30a4e6298?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2xpdGljYWwlMjBjYW1wYWlnbiUyMHN0cmF0ZWd5fGVufDF8fHx8MTc4Mzk3MDg4MXww&ixlib=rb-4.1.0&q=80&w=1080'
+                image: '/art/people.png'
               },
               {
-                title: 'Auto Compliance',
-                description: 'Taxes, pensions, and union rules handled automatically.',
+                title: 'Compliance Expertise',
+                description: 'We helped create the rules. Now they\u2019re built into the platform.',
                 icon: Shield,
-                image: 'https://images.unsplash.com/photo-1683481669762-90b3800049b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbWVyaWNhbiUyMGZsYWclMjBhYnN0cmFjdHxlbnwxfHx8fDE3ODM5NzM5OTF8MA&ixlib=rb-4.1.0&q=80&w=1080'
+                image: '/art/gear.png'
               }
             ].map((feature, index) => (
               <div 
@@ -383,13 +395,13 @@ export default function Home({ onNavigate }: HomeProps) {
               {
                 icon: Zap,
                 title: 'New Media',
-                description: 'Speed and precision for NBA, NFL, and high-profile work.',
+                description: 'Speed and precision for high-profile work.',
                 page: 'newmedia',
               },
               {
                 icon: Shield,
-                title: 'Agents & Talent',
-                description: 'Get people paid well and paid fast.',
+                title: 'Crew',
+                description: 'Built to manage crew and multi-day shoots.',
                 page: 'agents',
               }
             ].map((item, index) => (

@@ -23,7 +23,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     { id: 'portal', label: 'The Portal' },
     { id: 'political', label: 'Political Consultants' },
     { id: 'newmedia', label: 'New Media' },
-    { id: 'agents', label: 'Agents & Talent' },
+    { id: 'agents', label: 'Crew' },
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -47,11 +47,11 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             className="cursor-pointer flex items-center gap-3 group"
             onClick={() => handleNavigate('home')}
           >
-            <div className="text-2xl tracking-tight">
-              <span className="text-slate-900">Talent</span>
-              <span className="text-blue-900">Pay</span>
-              <span className="text-red-600">Master</span>
-            </div>
+            <img
+              src="/TPM-Logo.png"
+              alt="Talent PayMaster"
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Navigation */}

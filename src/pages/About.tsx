@@ -65,48 +65,38 @@ export default function About({ onNavigate }: AboutProps) {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-40 pb-40 bg-white">
+      <section className="pt-40 pb-40 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <AnimatedText>
             <div className="text-center">
-              <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light">
-                Innovating <span className="text-blue-900">Since 1986</span>
+              <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light text-white">
+                Innovating <span className="text-red-500">Since 1986</span>
               </h1>
               
-              <p className="text-2xl lg:text-3xl text-slate-600 mb-14 leading-relaxed max-w-4xl mx-auto font-light">
-                A small, dynamic, and bespoke team delivering modern tools.
+              <p className="text-2xl lg:text-3xl text-slate-300 mb-14 leading-relaxed max-w-4xl mx-auto font-light">
+                A dynamic team delivering modern tools.
               </p>
             </div>
           </AnimatedText>
         </div>
       </section>
 
-      {/* Image + Text Section */}
+      {/* Who We Are Section */}
       <section className="py-40 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedText>
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBvZmZpY2V8ZW58MXx8fHwxNzgzOTcxMTM5fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Professional team collaboration"
-                className="rounded-lg shadow-2xl"
-              />
-            </AnimatedText>
-            
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <AnimatedText delay={200}>
               <div>
                 <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light text-slate-900">Who We Are</h2>
                 <div className="space-y-6 text-xl text-slate-700 leading-relaxed font-light">
                   <p>
-                    Clients and agents are our priority. We bring powerful tools that help you develop talent, get people paid well and fast, and stay fully compliant.
+                    Clients are our priority. We bring powerful tools that help you develop talent, get people paid well and fast, and stay fully compliant.
                   </p>
                   <p>
-                    We understand political space and new media demands. Our small, dynamic team brings decades of experience combined with cutting-edge technology.
+                    We understand political space and new media demands. Our team matches the pace of that work, and clients get the benefit of decades of top-of-the-line experience behind every next generation tool we build.
                   </p>
                 </div>
               </div>
             </AnimatedText>
-          </div>
         </div>
       </section>
 
@@ -124,7 +114,7 @@ export default function About({ onNavigate }: AboutProps) {
               {
                 icon: Users,
                 title: 'Client-Centered',
-                description: 'Clients and agents are at the center of everything we do.',
+                description: 'Clients are at the center of everything we do.',
               },
               {
                 icon: Lightbulb,
@@ -175,7 +165,7 @@ export default function About({ onNavigate }: AboutProps) {
             </div>
             <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light">Our Legacy</h2>
             <p className="text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto font-light">
-              Since the 1990s we helped shape cable programming rate structures still used today. Today we continue that pioneering spirit with tools built for how you actually work now.
+              Since the 1990s we helped shape cable programming rate structures still used today. Since then we have continued with that same pioneering spirit, bringing you tools built for how you actually work.
             </p>
           </AnimatedText>
         </div>
@@ -202,7 +192,7 @@ export default function About({ onNavigate }: AboutProps) {
               },
               {
                 title: 'Modern Tools, Proven Expertise',
-                description: 'Cutting-edge technology combined with decades of industry knowledge.'
+                description: 'Next generation technology combined with decades of industry knowledge.'
               },
               {
                 title: 'We Kick Ass for Our Clients',

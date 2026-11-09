@@ -16,13 +16,15 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="text-2xl mb-4">
-              <span className="text-white">Talent</span>
-              <span className="text-blue-400">Pay</span>
-              <span className="text-red-500">Master</span>
+            <div className="mb-6">
+              <img
+                src="/TPM-Logo.png"
+                alt="Talent PayMaster"
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-slate-400 max-w-md leading-relaxed">
-              Innovating since 1986. A small, dynamic, and bespoke team delivering modern tools for political consultants, agents, and new media teams.
+              Innovating since 1986, TPM delivers modern pay service tools for political consultants, agents, new media teams, and more.
             </p>
           </div>
 

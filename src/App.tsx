@@ -14,6 +14,7 @@ export default function App() {
 
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
+    window.scrollTo(0, 0);
   };
 
   const renderPage = () => {

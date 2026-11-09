@@ -22,12 +22,12 @@ export const images = {
     // Replace these placeholder URLs with your actual logo files
     // Recommended: Use transparent PNG files, approximately 200-400px wide
     clientLogos: {
-      historyChannel: "https://via.placeholder.com/300x100/1e293b/ffffff?text=HISTORY+CHANNEL",
-      investigationDiscovery: "https://via.placeholder.com/200x100/1e293b/ffffff?text=ID",
-      discoveryChannel: "https://via.placeholder.com/300x100/1e293b/ffffff?text=DISCOVERY",
-      nfl: "https://via.placeholder.com/200x200/013369/ffffff?text=NFL",
-      tlc: "https://via.placeholder.com/250x100/7c3aed/ffffff?text=TLC",
-      nationalGeographic: "https://via.placeholder.com/300x100/1e293b/ffffff?text=NAT+GEO",
+      historyChannel: "/logos/history.png",
+      investigationDiscovery: "/logos/id.png",
+      discoveryChannel: "/logos/discovery.png",
+      nfl: "/logos/nfl.png",
+      tlc: "/logos/tlc.png",
+      nationalGeographic: "/logos/natgeo.png",
     },
   
     // ============================================
@@ -111,4 +111,3 @@ export const images = {
   
   // Default export for easy importing
   export default images;
-  

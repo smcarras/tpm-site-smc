@@ -65,16 +65,62 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-40 pb-40 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="relative pt-40 pb-40 bg-white overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <div className="blob blob-a"></div>
+          <div className="blob blob-b"></div>
+          <div className="blob blob-c"></div>
+          <div className="absolute inset-0 bg-white/40"></div>
+        </div>
+        <style>{`
+          .blob {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.55;
+            will-change: transform;
+          }
+          .blob-a {
+            width: 520px; height: 520px;
+            top: -140px; left: -120px;
+            background: radial-gradient(circle at 30% 30%, #4a48a3, #1e1c6d);
+            animation: blobA 26s ease-in-out infinite;
+          }
+          .blob-b {
+            width: 460px; height: 460px;
+            top: 40px; right: -140px;
+            background: radial-gradient(circle at 30% 30%, #e14b3b, #be061b);
+            opacity: 0.4;
+            animation: blobB 32s ease-in-out infinite;
+          }
+          .blob-c {
+            width: 400px; height: 400px;
+            bottom: -160px; left: 45%;
+            background: radial-gradient(circle at 30% 30%, #6f6dc4, #312e88);
+            animation: blobC 30s ease-in-out infinite;
+          }
+          @keyframes blobA {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(90px,70px) scale(1.12); }
+          }
+          @keyframes blobB {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-80px,60px) scale(1.15); }
+          }
+          @keyframes blobC {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-60px,-70px) scale(1.1); }
+          }
+        `}</style>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
           <AnimatedText>
             <div className="text-center">
               <h1 className="text-7xl lg:text-9xl mb-10 leading-[0.95] tracking-tighter font-light">
-                Develop Talent. <span className="text-red-600">Get Paid Well.</span> Get Paid Fast.
+                Manage <span className="text-red-600">Crew.</span> Get Paid Fast.
               </h1>
               
               <p className="text-2xl lg:text-3xl text-slate-600 mb-14 leading-relaxed max-w-4xl mx-auto font-light">
-                Modern tools for agents and talent to manage bookings, payments, and contracts.
+                Our platform is specifically designed to manage crew and multi-day shoots.
               </p>
               
               <CTAButton 
@@ -89,7 +135,7 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
         </div>
       </section>
 
-      {/* For Agents & Talent */}
+      {/* For Crew & Coordinators */}
       <section className="py-40 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6">
@@ -98,15 +144,15 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
                 <div className="w-14 h-14 bg-red-600 rounded-lg flex items-center justify-center mb-6">
                   <Star size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-4xl mb-6 font-light">For Agents</h3>
+                <h3 className="text-4xl mb-6 font-light">For Production</h3>
                 <p className="text-lg mb-6 text-white/90 leading-relaxed font-light">
-                  Manage your entire roster with tools that save time.
+                  Manage your whole crew across every shoot day.
                 </p>
                 <div className="space-y-3">
                   {[
-                    'Manage multiple talent profiles',
-                    'Track bookings and availability',
-                    'Monitor payments',
+                    'Onboard crew for multi-day shoots',
+                    'Track call times and availability',
+                    'Monitor payment status across the crew',
                     'Generate reports instantly'
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
@@ -123,15 +169,15 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
                 <div className="w-14 h-14 bg-red-600 rounded-lg flex items-center justify-center mb-6">
                   <Users size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-4xl mb-6 font-light">For Talent</h3>
+                <h3 className="text-4xl mb-6 font-light">For Crew</h3>
                 <p className="text-lg mb-6 text-white/90 leading-relaxed font-light">
-                  Take control of your career with complete visibility.
+                  Everything you need in the portal, in one place.
                 </p>
                 <div className="space-y-3">
                   {[
-                    'View all bookings and schedule',
-                    'Track payments in real-time',
-                    'Access contracts and documents',
+                    'Upload your documents',
+                    'See all your jobs',
+                    'See payment status in real time',
                     'Submit timesheets easily'
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
@@ -152,7 +198,7 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
           <AnimatedText>
             <div className="text-center mb-20">
               <h2 className="text-6xl lg:text-7xl mb-6 tracking-tighter font-light text-slate-900">Complete Tools</h2>
-              <p className="text-xl text-slate-600 font-light">Everything you need to succeed</p>
+              <p className="text-xl text-slate-600 font-light">Everything the crew needs, on every shoot day</p>
             </div>
           </AnimatedText>
 
@@ -160,13 +206,13 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
             {[
               {
                 icon: DollarSign,
-                title: 'Get Paid Well and Fast',
+                title: 'Get Paid Fast',
                 description: 'Streamlined payment processing. No delays.',
               },
               {
                 icon: TrendingUp,
-                title: 'Career Development',
-                description: 'Track performance and opportunities.',
+                title: 'Multi-Day Shoots',
+                description: 'Built for shoots that run day after day.',
               },
               {
                 icon: Shield,
@@ -176,12 +222,12 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
               {
                 icon: Users,
                 title: 'Centralized Management',
-                description: 'All bookings and payments in one place.',
+                description: 'Every crew member, job, and payment in one place.',
               },
               {
                 icon: CheckCircle,
-                title: 'Transparent Reporting',
-                description: 'Complete visibility into earnings.',
+                title: 'Document Uploads',
+                description: 'Crew upload paperwork straight to the portal.',
               },
               {
                 icon: Star,
@@ -209,7 +255,7 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
           <AnimatedText>
             <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light">Built on Trust</h2>
             <p className="text-xl leading-relaxed mb-8 text-slate-400 font-light max-w-3xl mx-auto">
-              Since 1986, we've been helping talent and agents succeed. Our reputation is built on getting people paid well, paid fast, and always staying compliant.
+              Since 1986, we've been helping crews and productions succeed. Our reputation is built on getting people paid well, paid fast, and always staying compliant.
             </p>
           </AnimatedText>
         </div>
@@ -221,7 +267,7 @@ export default function AgentsAndTalent({ onNavigate }: AgentsAndTalentProps) {
           <AnimatedText>
             <h2 className="text-6xl lg:text-7xl mb-8 tracking-tighter font-light text-slate-900">Ready to work smarter?</h2>
             <p className="text-xl mb-14 text-slate-600 font-light">
-              Join agents and talent already succeeding with our tools.
+              Join the crews and productions already working with our tools.
             </p>
             <div className="flex flex-wrap gap-5 justify-center">
               <button
